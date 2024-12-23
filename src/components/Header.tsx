@@ -17,25 +17,28 @@ export const Header = () => {
             href="https://github.com/gvmfhy"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
           >
             <Github size={20} />
+            <span className="hidden sm:inline">GitHub</span>
           </a>
           <a
             href="https://www.linkedin.com/in/austin-p-morrissey/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
           >
             <Linkedin size={20} />
+            <span className="hidden sm:inline">LinkedIn</span>
           </a>
           <a
             href="https://austinpatrick.substack.com/about"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-300 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
           >
             <BookOpen size={20} />
+            <span className="hidden sm:inline">Substack</span>
           </a>
         </nav>
       </div>
