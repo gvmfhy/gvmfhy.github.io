@@ -1,5 +1,6 @@
 import { AboutSection } from "@/components/AboutSection";
 import { BlogPostCard } from "@/components/BlogPostCard";
+import { Header } from "@/components/Header";
 
 const BLOG_POSTS = [
   {
@@ -22,17 +23,20 @@ const BLOG_POSTS = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blog-dark to-gray-900">
-      <AboutSection />
-      <main className="max-w-4xl mx-auto px-4 pb-16">
-        <h2 className="text-2xl font-inter font-bold text-white mb-8">
-          Latest Posts
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2">
-          {BLOG_POSTS.map((post) => (
-            <BlogPostCard key={post.title} {...post} />
-          ))}
-        </div>
-      </main>
+      <Header />
+      <div className="pt-20">
+        <AboutSection />
+        <main className="max-w-4xl mx-auto px-4 pb-16">
+          <h2 className="text-2xl font-inter font-bold text-white mb-8">
+            Latest Posts
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {BLOG_POSTS.map((post) => (
+              <BlogPostCard key={post.title} {...post} />
+            ))}
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
