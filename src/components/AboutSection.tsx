@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Twitter } from "lucide-react";
+import { Github, Linkedin, BookOpen } from "lucide-react";
 
 export const AboutSection = () => {
   return (
@@ -13,12 +13,11 @@ export const AboutSection = () => {
         Austin Morrissey
       </h1>
       <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-        Welcome to my corner of the internet. I write about software development,
-        technology, and my journey as a developer.
+        This documentation encompasses my foundational studies in drug discovery, technology, and adjacent fields. Written from the perspective of someone new to these domains, it functions as both a personal learning journal and a potential resource for others at early stages of their educational journey.
       </p>
       <div className="flex gap-6">
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/gvmfhy"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
@@ -27,13 +26,22 @@ export const AboutSection = () => {
           <span>GitHub</span>
         </a>
         <a
-          href="https://twitter.com/yourusername"
+          href="https://www.linkedin.com/in/austin-p-morrissey/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
         >
-          <Twitter size={20} />
-          <span>Twitter</span>
+          <Linkedin size={20} />
+          <span>LinkedIn</span>
+        </a>
+        <a
+          href="https://austinpatrick.substack.com/about"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+        >
+          <BookOpen size={20} />
+          <span>Substack</span>
         </a>
       </div>
     </motion.section>
