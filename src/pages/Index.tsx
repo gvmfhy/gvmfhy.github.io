@@ -1,6 +1,7 @@
 import { AboutSection } from "@/components/AboutSection";
 import { BlogPostCard } from "@/components/BlogPostCard";
 import { Header } from "@/components/Header";
+import { motion } from "framer-motion";
 
 const BLOG_POSTS = [
   {
@@ -26,6 +27,15 @@ const Index = () => {
       <Header />
       <div className="pt-20">
         <AboutSection />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-4xl mx-auto px-4 py-8 text-center"
+        >
+          <p className="text-blog-primary text-lg font-medium mb-2">Want to build something together?</p>
+          <p className="text-gray-300">Reach out through any of the social links above!</p>
+        </motion.div>
         <main className="max-w-4xl mx-auto px-4 pb-16">
           <h2 className="text-2xl font-inter font-bold text-white mb-8">
             Latest Posts
