@@ -41,6 +41,7 @@ const Index = () => {
                 title={post.title}
                 excerpt={post.excerpt}
                 date={post.date}
+                slug={post.slug}
               />
             ))}
           </div>
