@@ -34,7 +34,7 @@ const Index = () => {
           className="max-w-4xl mx-auto px-4 py-8 text-center"
         >
           <p className="text-blog-primary text-lg font-medium mb-2">Want to build something together?</p>
-          <p className="text-gray-300">Reach out through any of the social links above!</p>
+          <p className="text-gray-300">Reach out through any of the social links above.</p>
         </motion.div>
         <main className="max-w-4xl mx-auto px-4 pb-16">
           <div className="flex items-center justify-between mb-8">
