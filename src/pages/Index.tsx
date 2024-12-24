@@ -2,26 +2,15 @@ import { AboutSection } from "@/components/AboutSection";
 import { BlogPostCard } from "@/components/BlogPostCard";
 import { Header } from "@/components/Header";
 import { motion } from "framer-motion";
-
-const BLOG_POSTS = [
-  {
-    title: "Getting Started with Drug Discovery",
-    excerpt: "My initial journey into understanding the basics of drug discovery and the key concepts every beginner should know.",
-    date: "March 20, 2024",
-  },
-  {
-    title: "Technology in Drug Development",
-    excerpt: "Exploring how modern technology and computational methods are transforming the drug discovery process.",
-    date: "March 15, 2024",
-  },
-  {
-    title: "Learning Resources for Beginners",
-    excerpt: "A curated collection of resources that helped me start learning about drug discovery and related technologies.",
-    date: "March 10, 2024",
-  },
-];
+import { useQuery } from "@tanstack/react-query";
+import { getPosts } from "@/utils/posts";
 
 const Index = () => {
+  const { data: posts = [] } = useQuery({
+    queryKey: ['posts'],
+    queryFn: getPosts,
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blog-dark to-gray-900">
       <Header />
@@ -46,8 +35,13 @@ const Index = () => {
             </div>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            {BLOG_POSTS.map((post) => (
-              <BlogPostCard key={post.title} {...post} />
+            {posts.map((post) => (
+              <BlogPostCard 
+                key={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                date={post.date}
+              />
             ))}
           </div>
         </main>
