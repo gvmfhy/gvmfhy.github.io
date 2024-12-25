@@ -11,13 +11,12 @@ export interface Prompt {
 
 export const getPrompts = async (): Promise<Prompt[]> => {
   console.log('Fetching prompts...');
-  const modules = import.meta.glob('../prompts/*.md', { eager: true });
+  const modules = await import.meta.glob('../prompts/*.md', { as: 'string', eager: true });
   console.log('Available modules:', modules);
   
-  const prompts = Object.entries(modules).map(([filepath, module]) => {
+  const prompts = Object.entries(modules).map(([filepath, content]) => {
     console.log('Processing filepath:', filepath);
-    const content = module as { default: string };
-    const { data, content: markdown } = matter(content.default);
+    const { data, content: markdown } = matter(content);
     console.log('Parsed frontmatter:', data);
     const slug = filepath.replace('../prompts/', '').replace('.md', '');
     
