@@ -16,7 +16,7 @@ export const getPrompts = async (): Promise<Prompt[]> => {
   
   const prompts = Object.entries(modules).map(([filepath, content]) => {
     console.log('Processing filepath:', filepath);
-    const { data, content: markdown } = matter(content);
+    const { data, content: markdown } = matter(content as string);
     console.log('Parsed frontmatter:', data);
     const slug = filepath.replace('../prompts/', '').replace('.md', '');
     
