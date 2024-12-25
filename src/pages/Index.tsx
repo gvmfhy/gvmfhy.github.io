@@ -13,10 +13,14 @@ const Index = () => {
     queryFn: getPosts,
   });
 
-  const { data: prompts = [] } = useQuery({
+  const { data: prompts = [], isLoading: isPromptsLoading, isError: isPromptsError } = useQuery({
     queryKey: ['prompts'],
     queryFn: getPrompts,
   });
+
+  console.log('Prompts data:', prompts);
+  console.log('Prompts loading:', isPromptsLoading);
+  console.log('Prompts error:', isPromptsError);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blog-dark to-gray-900">
@@ -67,15 +71,23 @@ const Index = () => {
               </div>
             </div>
             <div className="grid gap-6 md:grid-cols-2">
-              {prompts.map((prompt) => (
-                <PromptCard
-                  key={prompt.slug}
-                  title={prompt.title}
-                  description={prompt.description}
-                  category={prompt.category}
-                  slug={prompt.slug}
-                />
-              ))}
+              {isPromptsLoading ? (
+                <p className="text-white">Loading prompts...</p>
+              ) : isPromptsError ? (
+                <p className="text-red-500">Error loading prompts</p>
+              ) : prompts.length === 0 ? (
+                <p className="text-white">No prompts available</p>
+              ) : (
+                prompts.map((prompt) => (
+                  <PromptCard
+                    key={prompt.slug}
+                    title={prompt.title}
+                    description={prompt.description}
+                    category={prompt.category}
+                    slug={prompt.slug}
+                  />
+                ))
+              )}
             </div>
           </section>
         </main>
