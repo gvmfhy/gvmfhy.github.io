@@ -16,21 +16,21 @@ export const PromptCard = ({ title, description, category, slug }: PromptCardPro
       <motion.div
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.2 }}
-        className="w-full"
+        className="h-full"
       >
-        <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm">
+        <Card className="h-full bg-gray-800/50 border-gray-700 backdrop-blur-sm hover:bg-gray-800/70 transition-colors">
           <CardHeader>
-            <div className="flex justify-between items-start">
-              <h2 className="text-xl font-inter font-bold text-white hover:text-blog-primary transition-colors">
+            <div className="flex justify-between items-start gap-4">
+              <h2 className="text-xl font-inter font-bold text-white hover:text-blog-primary transition-colors line-clamp-2">
                 {title}
               </h2>
-              <Badge variant="secondary" className="bg-purple-800/50 text-white">
+              <Badge variant="secondary" className="bg-purple-800/50 text-white shrink-0">
                 {category}
               </Badge>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-300">{description}</p>
+            <p className="text-gray-300 line-clamp-3">{description}</p>
           </CardContent>
         </Card>
       </motion.div>
