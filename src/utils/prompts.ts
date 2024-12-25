@@ -1,4 +1,4 @@
-import matter from 'gray-matter';
+import frontMatter from 'front-matter';
 
 export interface Prompt {
   title: string;
@@ -12,7 +12,6 @@ export interface Prompt {
 export const getPrompts = async (): Promise<Prompt[]> => {
   console.log('Fetching prompts...');
   
-  // Use correct path relative to src directory
   const modules = import.meta.glob('/src/prompts/*.md', { 
     as: 'raw',
     eager: true 
@@ -29,18 +28,17 @@ export const getPrompts = async (): Promise<Prompt[]> => {
     }
     
     try {
-      const { data, content: markdown } = matter(content);
-      console.log('Parsed frontmatter:', data);
+      const { attributes, body } = frontMatter(content);
+      console.log('Parsed frontmatter:', attributes);
       
-      // Extract slug from filepath, handling both Windows and Unix paths
       const slug = filepath
         .split(/[/\\]/)
         .pop()
         ?.replace('.md', '') || '';
       
       return {
-        ...data,
-        content: markdown,
+        ...(attributes as Omit<Prompt, 'content' | 'slug'>),
+        content: body,
         slug,
       } as Prompt;
     } catch (error) {
